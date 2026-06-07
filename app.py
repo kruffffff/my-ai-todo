@@ -21,14 +21,14 @@ if "tasks" not in st.session_state:
 if "ai_analysis_result" not in st.session_state:
     st.session_state.ai_analysis_result = None
 
-# 🌟 구형/신형 API 키 모두 호환되는 안정적인 모델로 변경 완료
+# 🌟 최신 AQ. 형태의 키와 완벽하게 호환되는 최신 gemini-2.5-flash 모델 적용
 def ask_gemini_priority(selected_tasks, current_energy, api_key):
     try:
         # API 키 설정
         genai.configure(api_key=api_key)
         
-        # 🛠️ 에러가 나던 gemini-1.5-flash 대신 가장 호환성이 높은 gemini-pro 모델로 전면 교체
-        model = genai.GenerativeModel('gemini-pro')
+        # 🛠️ 최신 키 체계에서 무조건 작동하는 'gemini-2.5-flash'로 모델 전면 교체!
+        model = genai.GenerativeModel('gemini-2.5-flash')
         
         # AI에게 줄 미션(프롬프트) 작성
         tasks_str = "\n".join([f"- {t['title']} (중요도: {t['importance']}, 마감일: {t['due_date']})" for t in selected_tasks])
